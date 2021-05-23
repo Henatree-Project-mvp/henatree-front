@@ -5,6 +5,7 @@ export default function SignUpScreen({ setToken }) {
   return (
     <View>
       <View>
+        <Text>Etape 1/6</Text>
         <Text>Name: </Text>
         <TextInput placeholder="Username" />
         <Text>Password: </Text>

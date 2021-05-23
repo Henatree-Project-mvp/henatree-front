@@ -9,6 +9,11 @@ import ProfileScreen from "./containers/ProfileScreen";
 import SignInScreen from "./containers/SignInScreen";
 import SignUpScreen from "./containers/SignUpScreen";
 import SettingsScreen from "./containers/SettingsScreen";
+import OutingsScreen from "./containers/OutingsScreen";
+import SearchScreen from "./containers/SearchScreen";
+import CreateOutingScreen from "./containers/CreateOutingScreen";
+import MessageScreen from "./containers/MessageScreen";
+import OutingDetailScreen from "./containers/OutingDetailScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -46,16 +51,31 @@ export default function App() {
     <NavigationContainer>
       {isLoading ? null : userToken === null ? ( // We haven't finished checking for the token yet
         // No token found, user isn't signed in
+
+        // NO SIGNIN
         <Stack.Navigator>
+          {/* *************************** */}
+          {/*           SIGNIN            */}
+          {/* *************************** */}
           <Stack.Screen name="SignIn">
             {() => <SignInScreen setToken={setToken} />}
           </Stack.Screen>
+
+          {/* *************************** */}
+          {/*           SIGNUP           */}
+          {/* *************************** */}
           <Stack.Screen name="SignUp">
             {() => <SignUpScreen setToken={setToken} />}
           </Stack.Screen>
         </Stack.Navigator>
       ) : (
-        // User is signed in
+        // ************************
+        // *  User is signed in   *
+        // ************************
+
+        // ************************
+        // *  Navigation   *
+        // ************************
         <Stack.Navigator>
           <Stack.Screen name="Tab" options={{ headerShown: false }}>
             {() => (
@@ -65,10 +85,14 @@ export default function App() {
                   inactiveTintColor: "gray",
                 }}
               >
+                {/* *************************** */}
+                {/*           HOME           */}
+                {/* *************************** */}
                 <Tab.Screen
                   name="Home"
                   options={{
-                    tabBarLabel: "Home",
+                    tabBarLabel: "Explorez",
+                    title: "Explorez",
                     tabBarIcon: ({ color, size }) => (
                       <Ionicons name={"ios-home"} size={size} color={color} />
                     ),
@@ -79,29 +103,35 @@ export default function App() {
                       <Stack.Screen
                         name="Home"
                         options={{
-                          title: "My App",
+                          title: "Home",
                           headerStyle: { backgroundColor: "red" },
                           headerTitleStyle: { color: "white" },
                         }}
                       >
-                        {() => <HomeScreen />}
+                        {(props) => <HomeScreen {...props} />}
                       </Stack.Screen>
-
+                      {/* *************************** */}
+                      {/*       Voir les sorties      */}
+                      {/* *************************** */}
                       <Stack.Screen
-                        name="Profile"
+                        name="Outings"
                         options={{
-                          title: "User Profile",
+                          title: "Les sorties",
                         }}
                       >
-                        {() => <ProfileScreen />}
+                        {(props) => <OutingsScreen {...props} />}
                       </Stack.Screen>
                     </Stack.Navigator>
                   )}
                 </Tab.Screen>
+
+                {/* *************************** */}
+                {/*           Search            */}
+                {/* *************************** */}
                 <Tab.Screen
-                  name="Settings"
+                  name="Search"
                   options={{
-                    tabBarLabel: "Settings",
+                    tabBarLabel: "Recherche",
                     tabBarIcon: ({ color, size }) => (
                       <Ionicons
                         name={"ios-options"}
@@ -114,10 +144,90 @@ export default function App() {
                   {() => (
                     <Stack.Navigator>
                       <Stack.Screen
-                        name="Settings"
-                        options={{ title: "Settings", tabBarLabel: "Settings" }}
+                        name="Search"
+                        options={{
+                          title: "Recherche",
+                          tabBarLabel: "Recherche",
+                        }}
                       >
-                        {() => <SettingsScreen setToken={setToken} />}
+                        {() => <SearchScreen />}
+                      </Stack.Screen>
+                    </Stack.Navigator>
+                  )}
+                </Tab.Screen>
+
+                {/* *************************** */}
+                {/*         Create outing       */}
+                {/* *************************** */}
+                <Tab.Screen
+                  name="CreateOuting"
+                  options={{
+                    tabBarLabel: "+",
+                    tabBarIcon: ({ color, size }) => (
+                      <Ionicons
+                        name={"ios-options"}
+                        size={size}
+                        color={color}
+                      />
+                    ),
+                  }}
+                >
+                  {() => (
+                    <Stack.Navigator>
+                      <Stack.Screen name="CreateOuting">
+                        {() => <CreateOutingScreen />}
+                      </Stack.Screen>
+                    </Stack.Navigator>
+                  )}
+                </Tab.Screen>
+
+                {/* *************************** */}
+                {/*         Message       */}
+                {/* *************************** */}
+                <Tab.Screen
+                  name="Message"
+                  options={{
+                    tabBarLabel: "message",
+                    tabBarIcon: ({ color, size }) => (
+                      <Ionicons
+                        name={"ios-options"}
+                        size={size}
+                        color={color}
+                      />
+                    ),
+                  }}
+                >
+                  {() => (
+                    <Stack.Navigator>
+                      <Stack.Screen name="Message">
+                        {() => <MessageScreen />}
+                      </Stack.Screen>
+                    </Stack.Navigator>
+                  )}
+                </Tab.Screen>
+
+                {/* *************************** */}
+                {/*             Profil          */}
+                {/* *************************** */}
+                <Tab.Screen
+                  name="Profil"
+                  options={{
+                    tabBarLabel: "Profil",
+                    tabBarIcon: ({ color, size }) => (
+                      <Ionicons
+                        name={"ios-options"}
+                        size={size}
+                        color={color}
+                      />
+                    ),
+                  }}
+                >
+                  {() => (
+                    <Stack.Navigator>
+                      <Stack.Screen name="Profil">
+                        {(props) => (
+                          <ProfileScreen {...props} setToken={setToken} />
+                        )}
                       </Stack.Screen>
                     </Stack.Navigator>
                   )}

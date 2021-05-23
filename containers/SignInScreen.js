@@ -7,12 +7,12 @@ export default function SignInScreen({ setToken }) {
   return (
     <View>
       <View>
-        <Text>Name: </Text>
-        <TextInput placeholder="Username" />
-        <Text>Password: </Text>
-        <TextInput placeholder="Password" secureTextEntry={true} />
+        <Text>E-mail: </Text>
+        <TextInput placeholder="E-mail" />
+        <Text>Mot de passe : </Text>
+        <TextInput placeholder="Mot de passe" secureTextEntry={true} />
         <Button
-          title="Sign in"
+          title="Connexion"
           onPress={async () => {
             const userToken = "secret-token";
             setToken(userToken);
@@ -23,7 +23,7 @@ export default function SignInScreen({ setToken }) {
             navigation.navigate("SignUp");
           }}
         >
-          <Text>Create an account</Text>
+          <Text>Créer un compte</Text>
         </TouchableOpacity>
       </View>
     </View>

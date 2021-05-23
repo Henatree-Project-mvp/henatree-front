@@ -6,11 +6,12 @@ export default function HomeScreen() {
   const navigation = useNavigation();
   return (
     <View>
-      <Text>Welcome home!</Text>
+      <Text style={{ fontSize: 26 }}>Faites des rencontres différemment</Text>
+      <Text>Homepage</Text>
       <Button
-        title="Go to Profile"
+        title="Voir les sorties"
         onPress={() => {
-          navigation.navigate("Profile", { userId: 123 });
+          navigation.navigate("Outings");
         }}
       />
     </View>
