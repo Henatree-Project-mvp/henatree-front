@@ -2,6 +2,8 @@ import React from "react";
 import { useNavigation } from "@react-navigation/core";
 import { Button, Text, View, TouchableOpacity } from "react-native";
 import colors from "../assets/colors";
+import categories from "../assets/categories.json";
+import sorties from "../assets/sorties.json";
 
 export default function HomeScreen({ navigation }) {
   return (

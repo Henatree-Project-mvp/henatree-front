@@ -1,0 +1,33 @@
+{
+  "categorie": "Musique",
+  "titre": "Sortie concert",
+  "datePublication": "11-05-2021",
+  "horairePublication": "23h42",
+  "dateSortie": "11-06-2021",
+  "horaireSortie": "20h00",
+  "nbParticipants": 5,
+  "maxParticipants": 8,
+  "photo": "sortie.jpg",
+  "participants": [
+    { "id": 1, "username": "Marcel", "age": 22, "statut": "étudiant" },
+    { "id": 2, "username": "Monique", "age": 23, "statut": "développeuse" },
+    {
+      "id": 3,
+      "username": "Micheline",
+      "age": 24,
+      "statut": "marchande de sable"
+    },
+    { "id": 4, "username": "Joseph", "age": 25, "statut": "étudiant" },
+    {
+      "id": 5,
+      "username": "Charlotte De La Haute Société",
+      "age": 26,
+      "statut": "étudiant"
+    }
+  ],
+  "ville": "Lille",
+  "lieu": "Zénith Lille",
+  "organisateur": "Martin Magnier",
+  "Description": "Oportunum est, ut arbitror, explanare nunc causam, quae ad exitium praecipitem Aginatium inpulit iam inde a priscis maioribus nobilem, ut locuta est pertinacior fama. nec enim super hoc ulla documentorum rata est fides.",
+  "tags": ["Concert", "Musique", "Soirée", "Rap", "Musique urbaine"]
+}
