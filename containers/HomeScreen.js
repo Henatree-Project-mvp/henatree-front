@@ -14,7 +14,7 @@ export default function HomeScreen({ navigation }) {
           navigation.navigate("OutingDetail");
         }}
       >
-        <Text>Voir une sortie</Text>
+        <Text style={{ fontSize: 18, color: "blue" }}>Voir une sortie</Text>
       </TouchableOpacity>
       <Button
         title="Voir les sorties / Sorties à la une"

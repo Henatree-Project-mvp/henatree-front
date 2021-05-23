@@ -14,6 +14,7 @@ import SearchScreen from "./containers/SearchScreen";
 import CreateOutingScreen from "./containers/CreateOutingScreen";
 import MessageScreen from "./containers/MessageScreen";
 import OutingDetailScreen from "./containers/OutingDetailScreen";
+import SetUpProfileScreen from "./containers/SetUpProfileScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -238,6 +239,11 @@ export default function App() {
                       <Stack.Screen name="Profil">
                         {(props) => (
                           <ProfileScreen {...props} setToken={setToken} />
+                        )}
+                      </Stack.Screen>
+                      <Stack.Screen name="SetUpProfile">
+                        {(props) => (
+                          <SetUpProfileScreen {...props} setToken={setToken} />
                         )}
                       </Stack.Screen>
                     </Stack.Navigator>
