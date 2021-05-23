@@ -121,6 +121,17 @@ export default function App() {
                       >
                         {(props) => <OutingsScreen {...props} />}
                       </Stack.Screen>
+                      {/* *************************** */}
+                      {/*       Une sortie      */}
+                      {/* *************************** */}
+                      <Stack.Screen
+                        name="OutingDetail"
+                        options={{
+                          title: "Une sortie",
+                        }}
+                      >
+                        {(props) => <OutingDetailScreen {...props} />}
+                      </Stack.Screen>
                     </Stack.Navigator>
                   )}
                 </Tab.Screen>
