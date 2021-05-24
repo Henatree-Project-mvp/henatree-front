@@ -15,6 +15,7 @@ import CreateOutingScreen from "./containers/CreateOutingScreen";
 import MessageScreen from "./containers/MessageScreen";
 import OutingDetailScreen from "./containers/OutingDetailScreen";
 import SetUpProfileScreen from "./containers/SetUpProfileScreen";
+import OnBoarding from "./containers/OnBoardingScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -65,9 +66,13 @@ export default function App() {
           {/* *************************** */}
           {/*           SIGNUP           */}
           {/* *************************** */}
-          <Stack.Screen name="SignUp">
+          <Stack.Screen name="SignUp" options={{ headerShown: false }}>
             {() => <SignUpScreen setToken={setToken} />}
           </Stack.Screen>
+          {/* *************************** */}
+          {/*           ONBOARDING        */}
+          {/* *************************** */}
+          <Stack.Screen name="OnBoarding">{() => <OnBoarding />}</Stack.Screen>
         </Stack.Navigator>
       ) : (
         // ************************
