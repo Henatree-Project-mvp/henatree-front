@@ -8,7 +8,7 @@
     "horaireSortie": "20h00",
     "nbParticipants": 5,
     "maxParticipants": 8,
-    "photo": "sortie.jpg",
+    "photo": "https://res.cloudinary.com/lilycloud/image/upload/v1621786339/sorties/sortie-concert_oxifpk.jpg",
     "participants": [
       { "id": 1, "username": "Marcel", "age": 22, "statut": "étudiant" },
       { "id": 2, "username": "Monique", "age": 23, "statut": "développeuse" },
@@ -41,7 +41,7 @@
     "horaireSortie": "16h00",
     "nbParticipants": 4,
     "maxParticipants": 8,
-    "photo": "sortie.jpg",
+    "photo": "https://res.cloudinary.com/lilycloud/image/upload/v1621786339/sorties/sortie-rando_cejixl.jpg",
     "participants": [
       { "id": 1, "username": "Marcel", "age": 22, "statut": "étudiant" },
       { "id": 2, "username": "Monique", "age": 23, "statut": "développeuse" },
@@ -68,7 +68,7 @@
     "horaireSortie": "16h00",
     "nbParticipants": 3,
     "maxParticipants": 10,
-    "photo": "sortie.jpg",
+    "photo": "https://res.cloudinary.com/lilycloud/image/upload/v1621786339/sorties/sortie-photo_kmbrcb.jpg",
     "participants": [
       { "id": 1, "username": "Marcel", "age": 22, "statut": "étudiant" },
       { "id": 2, "username": "Monique", "age": 23, "statut": "développeuse" },
