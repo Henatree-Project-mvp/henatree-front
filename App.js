@@ -3,7 +3,13 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
+//Import des icones
+import {
+  Ionicons,
+  MaterialCommunityIcons,
+  FontAwesome,
+} from "@expo/vector-icons";
+// import { HeaderBackButton } from "@react-navigation/stack";
 import HomeScreen from "./containers/HomeScreen";
 import ProfileScreen from "./containers/ProfileScreen";
 import SignInScreen from "./containers/SignInScreen";
@@ -15,6 +21,11 @@ import CreateOutingScreen from "./containers/CreateOutingScreen";
 import MessageScreen from "./containers/MessageScreen";
 import OutingDetailScreen from "./containers/OutingDetailScreen";
 import SetUpProfileScreen from "./containers/SetUpProfileScreen";
+
+//Import des couleurs
+import colors from "./assets/colors";
+const { yellow, blue, darkBlue, dark, errorColor, greyButton, greyFont } =
+  colors;
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -82,7 +93,7 @@ export default function App() {
             {() => (
               <Tab.Navigator
                 tabBarOptions={{
-                  activeTintColor: "tomato",
+                  activeTintColor: blue,
                   inactiveTintColor: "gray",
                 }}
               >
@@ -95,7 +106,7 @@ export default function App() {
                     tabBarLabel: "Explorez",
                     title: "Explorez",
                     tabBarIcon: ({ color, size }) => (
-                      <Ionicons name={"ios-home"} size={size} color={color} />
+                      <Ionicons name="map" size={size} color={color} />
                     ),
                   }}
                 >
@@ -117,7 +128,14 @@ export default function App() {
                       <Stack.Screen
                         name="Outings"
                         options={{
-                          title: "Les sorties",
+                          title: "Sorties à la Une",
+                          // headerLeft: () => (
+                          //   <FontAwesome
+                          //     name="chevron-left"
+                          //     size={24}
+                          //     color={blue}
+                          //   />
+                          // ),
                         }}
                       >
                         {(props) => <OutingsScreen {...props} />}
@@ -129,6 +147,7 @@ export default function App() {
                         name="OutingDetail"
                         options={{
                           title: "Une sortie",
+                          // headerLeft: false,
                         }}
                       >
                         {(props) => <OutingDetailScreen {...props} />}
@@ -145,11 +164,7 @@ export default function App() {
                   options={{
                     tabBarLabel: "Recherche",
                     tabBarIcon: ({ color, size }) => (
-                      <Ionicons
-                        name={"ios-options"}
-                        size={size}
-                        color={color}
-                      />
+                      <Ionicons name="search" size={size} color={color} />
                     ),
                   }}
                 >
@@ -174,13 +189,9 @@ export default function App() {
                 <Tab.Screen
                   name="CreateOuting"
                   options={{
-                    tabBarLabel: "+",
+                    tabBarLabel: "",
                     tabBarIcon: ({ color, size }) => (
-                      <Ionicons
-                        name={"ios-options"}
-                        size={size}
-                        color={color}
-                      />
+                      <Ionicons name="add-circle" size={35} color={color} />
                     ),
                   }}
                 >
@@ -201,11 +212,7 @@ export default function App() {
                   options={{
                     tabBarLabel: "message",
                     tabBarIcon: ({ color, size }) => (
-                      <Ionicons
-                        name={"ios-options"}
-                        size={size}
-                        color={color}
-                      />
+                      <Ionicons name="mail-open" size={size} color={color} />
                     ),
                   }}
                 >
@@ -226,8 +233,8 @@ export default function App() {
                   options={{
                     tabBarLabel: "Profil",
                     tabBarIcon: ({ color, size }) => (
-                      <Ionicons
-                        name={"ios-options"}
+                      <MaterialCommunityIcons
+                        name="account"
                         size={size}
                         color={color}
                       />
