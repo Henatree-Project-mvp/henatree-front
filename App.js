@@ -28,8 +28,6 @@ import colors from "./assets/colors";
 const { yellow, blue, darkBlue, dark, errorColor, greyButton, greyFont } =
   colors;
 
-import colors from "./assets/colors";
-
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
