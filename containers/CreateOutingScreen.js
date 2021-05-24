@@ -133,6 +133,36 @@ export default function CreateOutingScreen({ navigation, route }) {
           {/******************************************/}
         </View>
       )}
+
+      {stepNum === 4 && (
+        <View>
+          <View style={styles.mainView}>
+            <Text style={styles.title}>Quand se déroulera cette sortie </Text>
+            <Text style={styles.p}>
+              Nous avons besoin de quelques informations pour publier ta sortie
+            </Text>
+            <TextInput
+              style={styles.textInput}
+              onChangeText={(e) => {
+                setDescription(e);
+              }}
+              placeholder="Ajoute une description"
+            />
+            <Text>{name}</Text>
+          </View>
+
+          {/*********YELLOW BUTTON*******************/}
+
+          <TouchableOpacity
+            style={styles.yellowButton}
+            onPress={pressYellowBtn}
+          >
+            <AntDesign name="arrowright" size={35} color="white" />
+          </TouchableOpacity>
+
+          {/******************************************/}
+        </View>
+      )}
     </>
   );
 }
