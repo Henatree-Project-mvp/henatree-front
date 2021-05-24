@@ -187,7 +187,7 @@ export default function App() {
                   {() => (
                     <Stack.Navigator>
                       <Stack.Screen name="CreateOuting">
-                        {() => <CreateOutingScreen />}
+                        {(props) => <CreateOutingScreen {...props} />}
                       </Stack.Screen>
                     </Stack.Navigator>
                   )}
