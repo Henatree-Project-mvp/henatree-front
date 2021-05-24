@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Text, TextInput, View } from "react-native";
+import YellowNextButton from "../components/YellowNextButton";
 
 export default function SignUpScreen({ setToken }) {
   return (
@@ -18,6 +19,7 @@ export default function SignUpScreen({ setToken }) {
           }}
         />
       </View>
+      <YellowNextButton />
     </View>
   );
 }
