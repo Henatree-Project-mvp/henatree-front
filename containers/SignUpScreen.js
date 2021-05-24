@@ -1,10 +1,10 @@
 import React from "react";
-import { Button, Text, TextInput, View } from "react-native";
+import { Button, Text, TextInput, View, StyleSheet } from "react-native";
 import YellowNextButton from "../components/YellowNextButton";
 
 export default function SignUpScreen({ setToken }) {
   return (
-    <View>
+    <View style={styles.container}>
       <View>
         <Text>Etape 1/6</Text>
         <Text>Name: </Text>
@@ -23,3 +23,9 @@ export default function SignUpScreen({ setToken }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});

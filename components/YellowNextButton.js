@@ -5,7 +5,7 @@ import colors from "../assets/colors";
 
 const YellowNextButton = ({ onPress }) => {
   return (
-    <View>
+    <View style={styles.bottom}>
       <TouchableOpacity style={styles.button} onPress={onPress}>
         <AntDesign name="arrowright" size={35} color="white" />
       </TouchableOpacity>
@@ -16,9 +16,14 @@ const YellowNextButton = ({ onPress }) => {
 export default YellowNextButton;
 
 const styles = StyleSheet.create({
+  bottom: {
+    flex: 1,
+    alignItems: "flex-end",
+    marginRight: 30,
+    marginBottom: 30,
+  },
   button: {
     position: "absolute",
-    right: 20,
     bottom: 0,
     padding: 10,
     borderRadius: 80,
