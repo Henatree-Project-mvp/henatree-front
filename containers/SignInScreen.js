@@ -20,7 +20,7 @@ export default function SignInScreen({ setToken }) {
         />
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("SignUp");
+            navigation.navigate("OnBoarding");
           }}
         >
           <Text>Créer un compte</Text>

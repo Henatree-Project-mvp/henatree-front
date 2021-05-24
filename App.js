@@ -28,6 +28,8 @@ import colors from "./assets/colors";
 const { yellow, blue, darkBlue, dark, errorColor, greyButton, greyFont } =
   colors;
 
+import colors from "./assets/colors";
+
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -120,9 +122,7 @@ export default function App() {
                       <Stack.Screen
                         name="Home"
                         options={{
-                          title: "Home",
-                          headerStyle: { backgroundColor: "red" },
-                          headerTitleStyle: { color: "white" },
+                          headerShown: false,
                         }}
                       >
                         {(props) => <HomeScreen {...props} />}
