@@ -22,31 +22,31 @@ export default function OutingsScreen({ navigation }) {
   console.log(sorties);
   return (
     <View>
-      <Text style={{ fontSize: 26 }}>Sorties à la une</Text>
+      {/* <Text style={{ fontSize: 26 }}>Sorties à la une</Text>
       <TouchableOpacity
         onPress={() => {
           navigation.navigate("OutingDetail");
         }}
       >
         <Text style={{ fontSize: 18, color: "blue" }}>Voir une sortie</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <FlatList
         data={sorties}
+        style={styles.container}
         keyExtractor={(item) => item.categorie}
         renderItem={({ item }) => {
           return (
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate("OutingDetail");
+                navigation.navigate("OutingDetail", {
+                  categorie: item.categorie,
+                });
               }}
             >
-              <Image
-                style={styles.outingPicture}
-                source={{ uri: item.photo }}
-              />
-              <Text style={styles.outingTitle}>{item.titre}</Text>
+              <Image style={styles.photoSortie} source={{ uri: item.photo }} />
+              <Text style={styles.titreSortie}>{item.titre}</Text>
               <Text
-                style={styles.txtInfos}
+                style={styles.txtInfosSortie}
               >{`${item.dateSortie} ${item.horaireSortie} - ${item.nbParticipants}/${item.maxParticipants} participants - ${item.ville} `}</Text>
             </TouchableOpacity>
           );
@@ -57,8 +57,23 @@ export default function OutingsScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  outingPicture: {
+  container: {
+    padding: 20,
+    backgroundColor: "white",
+  },
+  photoSortie: {
     width: "100%",
-    height: 250,
+    height: 200,
+    marginBottom: 10,
+  },
+  titreSortie: {
+    color: blue,
+    fontWeight: "bold",
+    fontSize: 18,
+    marginBottom: 10,
+  },
+  txtInfosSortie: {
+    fontWeight: "bold",
+    marginBottom: 10,
   },
 });
