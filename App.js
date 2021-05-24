@@ -16,6 +16,8 @@ import MessageScreen from "./containers/MessageScreen";
 import OutingDetailScreen from "./containers/OutingDetailScreen";
 import SetUpProfileScreen from "./containers/SetUpProfileScreen";
 
+import colors from "./assets/colors";
+
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -104,9 +106,7 @@ export default function App() {
                       <Stack.Screen
                         name="Home"
                         options={{
-                          title: "Home",
-                          headerStyle: { backgroundColor: "red" },
-                          headerTitleStyle: { color: "white" },
+                          headerShown: false,
                         }}
                       >
                         {(props) => <HomeScreen {...props} />}

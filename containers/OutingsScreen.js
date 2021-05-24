@@ -19,7 +19,6 @@ import categories from "../assets/categories.json";
 import sorties from "../assets/sorties.json";
 
 export default function OutingsScreen({ navigation }) {
-  console.log(sorties);
   return (
     <View>
       <Text style={{ fontSize: 26 }}>Sorties à la une</Text>

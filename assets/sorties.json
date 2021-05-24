@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "categorie": "Musique",
     "titre": "Sortie concert",
     "datePublication": "11-05-2021",
@@ -33,6 +34,7 @@
     "tags": ["Concert", "Musique", "Soirée", "Rap", "Musique urbaine"]
   },
   {
+    "id": 2,
     "categorie": "Randonnée",
     "titre": "Balade bord de mer",
     "datePublication": "11-05-2021",
@@ -60,6 +62,7 @@
     "tags": ["Balade", "Randonnée", "Nature", "Mer"]
   },
   {
+    "id": 3,
     "categorie": "Photo",
     "titre": "Sortie photo",
     "datePublication": "11-05-2021",
