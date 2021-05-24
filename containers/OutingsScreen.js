@@ -23,12 +23,23 @@ export default function OutingsScreen({ navigation }) {
   return (
     <View>
       <Text style={{ fontSize: 26 }}>Sorties à la une</Text>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("OutingDetail");
+        }}
+      >
+        <Text style={{ fontSize: 18, color: "blue" }}>Voir une sortie</Text>
+      </TouchableOpacity>
       <FlatList
         data={sorties}
         keyExtractor={(item) => item.categorie}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("OutingDetail");
+              }}
+            >
               <Image
                 style={styles.outingPicture}
                 source={{ uri: item.photo }}
@@ -41,13 +52,6 @@ export default function OutingsScreen({ navigation }) {
           );
         }}
       />
-      {/* <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("OutingDetail");
-        }}
-      >
-        <Text style={{ fontSize: 18, color: "blue" }}>Voir une sortie</Text>
-      </TouchableOpacity> */}
     </View>
   );
 }
