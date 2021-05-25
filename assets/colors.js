@@ -7,4 +7,5 @@ export default {
   errorColor: "#F35634", // error message,
   greyButton: "#EFF0F4", // Inactive Button,
   greyFont: "#A7A7A7",
+  blueLogo: "#1A2A6C",
 };
