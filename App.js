@@ -83,7 +83,9 @@ export default function App() {
           {/* *************************** */}
           {/*           ONBOARDING        */}
           {/* *************************** */}
-          <Stack.Screen name="OnBoarding">{() => <OnBoarding />}</Stack.Screen>
+          <Stack.Screen name="OnBoarding" options={{ headerShown: false }}>
+            {() => <OnBoarding />}
+          </Stack.Screen>
         </Stack.Navigator>
       ) : (
         // ************************

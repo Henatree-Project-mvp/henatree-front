@@ -42,7 +42,7 @@ export default function SignUpScreen({ setToken }) {
           <TouchableOpacity
             style={styles.button}
             onPress={() => {
-              navigation.navigate("OnBoarding");
+              navigation.push("OnBoarding");
             }}
           >
             <Text style={styles.text}>Je m'inscris</Text>
