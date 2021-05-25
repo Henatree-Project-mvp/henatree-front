@@ -68,6 +68,11 @@ export default function App() {
         // NO SIGNIN
         <Stack.Navigator>
           {/* *************************** */}
+          {/*           SIGNUP           */}
+          {/* *************************** */}
+          <Stack.Screen name="SignUp" options={{ headerShown: false }}>
+            {() => <SignUpScreen setToken={setToken} />}
+          {/* *************************** */}
           {/*           SIGNUP            */}
           {/* *************************** */}
           <Stack.Screen name="SignUp" options={{ headerShown: false }}>
@@ -80,12 +85,17 @@ export default function App() {
             {() => <SignInScreen setToken={setToken} />}
           </Stack.Screen>
           {/* *************************** */}
+          {/*           SIGNIN            */}
+          {/* *************************** */}
+          <Stack.Screen name="SignIn">
+            {() => <SignInScreen setToken={setToken} />}
+          </Stack.Screen>
+          {/* *************************** */}
           {/*           ONBOARDING        */}
           {/* *************************** */}
           <Stack.Screen name="OnBoarding" options={{ headerShown: false }}>
             {() => <OnBoarding />}
           </Stack.Screen>
-         
           {/* *************************** */}
           {/*        SETUP PROFIL         */}
           {/* *************************** */}
@@ -210,7 +220,10 @@ export default function App() {
                 >
                   {() => (
                     <Stack.Navigator>
-                      <Stack.Screen name="CreateOuting">
+                      <Stack.Screen
+                        name="CreateOuting"
+                        options={{ headerShown: false }}
+                      >
                         {(props) => <CreateOutingScreen {...props} />}
                       </Stack.Screen>
                     </Stack.Navigator>
