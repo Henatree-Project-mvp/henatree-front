@@ -9,7 +9,10 @@ const OutingTypeOpacity = ({ onPress, text, size, set, clickable }) => {
   };
 
   return (
-    <TouchableOpacity style={styles.button} onPress={handleOnPress}>
+    <TouchableOpacity
+      style={size === "small" ? styles.small : styles.large}
+      onPress={handleOnPress}
+    >
       <Text>{text}</Text>
     </TouchableOpacity>
   );
@@ -18,7 +21,7 @@ const OutingTypeOpacity = ({ onPress, text, size, set, clickable }) => {
 export default OutingTypeOpacity;
 
 const styles = StyleSheet.create({
-  button: {
+  large: {
     borderRadius: 5,
     width: "90%",
     height: 50,
@@ -26,5 +29,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: colors.greyButton,
     marginBottom: 12,
+  },
+
+  small: {
+    borderRadius: 5,
+    minWidth: "30%",
+    height: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: colors.greyButton,
+    marginBottom: 12,
+    marginRight: 10,
+    padding: 10,
   },
 });
