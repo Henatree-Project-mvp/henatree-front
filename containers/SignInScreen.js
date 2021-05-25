@@ -97,9 +97,12 @@ export default function SignInScreen({ setToken }) {
         )}
         {/* CONNECT */}
         <TouchableOpacity
+
           style={styles.button}
           onPress={async () => {
             handleSubmit();
+
+
           }}
           // onPress={async () => {
           //   const userToken = "secret-token";

@@ -82,13 +82,18 @@ export default function App() {
           {/* *************************** */}
           {/*           ONBOARDING        */}
           {/* *************************** */}
-          <Stack.Screen name="OnBoarding">{() => <OnBoarding />}</Stack.Screen>
+          <Stack.Screen name="OnBoarding" options={{ headerShown: false }}>
+            {() => <OnBoarding />}
+          </Stack.Screen>
+         
           {/* *************************** */}
           {/*        SETUP PROFIL         */}
           {/* *************************** */}
           <Stack.Screen name="SetUpProfile">
             {(props) => <SetUpProfileScreen {...props} setToken={setToken} />}
-          </Stack.Screen>
+ </Stack.Screen>
+         
+          
         </Stack.Navigator>
       ) : (
         // ************************
