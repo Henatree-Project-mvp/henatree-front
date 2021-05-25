@@ -82,7 +82,9 @@ export default function App() {
           {/* *************************** */}
           {/*           ONBOARDING        */}
           {/* *************************** */}
-          <Stack.Screen name="OnBoarding">{() => <OnBoarding />}</Stack.Screen>
+          <Stack.Screen name="OnBoarding" options={{ headerShown: false }}>
+            {() => <OnBoarding />}
+          </Stack.Screen>
           {/* *************************** */}
           {/*        SETUP PROFIL         */}
           {/* *************************** */}
@@ -205,7 +207,10 @@ export default function App() {
                 >
                   {() => (
                     <Stack.Navigator>
-                      <Stack.Screen name="CreateOuting">
+                      <Stack.Screen
+                        name="CreateOuting"
+                        options={{ headerShown: false }}
+                      >
                         {(props) => <CreateOutingScreen {...props} />}
                       </Stack.Screen>
                     </Stack.Navigator>
