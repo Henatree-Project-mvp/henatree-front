@@ -45,7 +45,7 @@ export default function HomeScreen({ navigation }) {
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>
-          Faites des rencontres différemment 😍
+          Faites des rencontres différemment 😻
         </Text>
         <TextInput
           style={styles.headerInput}
@@ -55,7 +55,7 @@ export default function HomeScreen({ navigation }) {
 
       {/* Content */}
 
-      <View style={styles.content}>
+      <ScrollView style={styles.content}>
         {/* Title Content */}
         <Text style={styles.contentTitle}>De quoi as-tu envie ?</Text>
         <Text style={styles.contentSubTitle}>Lorem ipsum dolor sit amet.</Text>
@@ -110,21 +110,16 @@ export default function HomeScreen({ navigation }) {
             {/* Cols Outing */}
             {displayOutings}
           </ScrollView>
+          <TouchableOpacity
+            style={styles.btn}
+            onPress={() => {
+              navigation.navigate("Outings");
+            }}
+          >
+            <Text style={styles.txtBtn}>Voir les sorties (3)</Text>
+          </TouchableOpacity>
         </View>
-      </View>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("OutingDetail");
-        }}
-      >
-        <Text style={{ fontSize: 18, color: "blue" }}>Voir une sortie</Text>
-      </TouchableOpacity>
-      <Button
-        title="Voir les sorties / Sorties à la une"
-        onPress={() => {
-          navigation.navigate("Outings");
-        }}
-      />
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -220,5 +215,19 @@ const styles = StyleSheet.create({
     paddingTop: 4,
     fontSize: 14,
     color: colors.dark,
+  },
+  btn: {
+    marginTop: 30,
+    width: "100%",
+    height: 60,
+    borderColor: colors.blue,
+    borderWidth: 1,
+    borderRadius: 8,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  txtBtn: {
+    color: colors.blue,
+    fontSize: 20,
   },
 });

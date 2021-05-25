@@ -1,0 +1,201 @@
+[
+  {
+    "id": "1",
+    "name": "Sortie concert",
+    "mainPicture": "https://res.cloudinary.com/lilycloud/image/upload/v1621786339/sorties/sortie-concert_oxifpk.jpg",
+    "release_date": "2021-05-25T15:01:03.426Z",
+    "description": "Oportunum est, ut arbitror, explanare nunc causam, quae ad exitium praecipitem Aginatium inpulit iam inde a priscis maioribus nobilem, ut locuta est pertinacior fama. nec enim super hoc ulla documentorum rata est fides.",
+    "price": 0,
+    "tags": [
+      {
+        "id": 1,
+        "name": "concert",
+        "published_at": "11-05-2021",
+        "created_by": "Martin Manier",
+        "updated_by": "Martin Manier"
+      }
+    ],
+    "participant_count": 5,
+    "participants": [
+      {
+        "id": 1,
+        "username": "Monique",
+        "email": "monique@test.com",
+        "provider": "",
+        "password": "azerty",
+        "resetPasswordToken": "",
+        "confirmationToken": "",
+        "confirmed": true,
+        "blocked": false,
+        "role": "",
+        "age": 23,
+        "favorite_hangouts": "Component",
+        "goal": "Meet new friends",
+        "single": true,
+        "age_range": "Component",
+        "created_by": "Monique",
+        "updated_by": "Monique"
+      }
+    ],
+    "location": {
+      "id": "ChIJz3h-LBQ7gUcRfEXFyzgRcZQ",
+      "display": "Crema, 26013 Crema, Crémone, Italie",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [9.6824841, 45.3643375]
+      }
+    },
+    "published_at": "11-05-2021"
+  },
+  {
+    "id": "2",
+    "name": "Randonnée en bord de mer",
+    "mainPicture": "https://res.cloudinary.com/lilycloud/image/upload/v1621786339/sorties/sortie-plage_b9dq9x.jpg",
+    "release_date": "2021-05-25T15:01:03.426Z",
+    "description": "Oportunum est, ut arbitror, explanare nunc causam, quae ad exitium praecipitem Aginatium inpulit iam inde a priscis maioribus nobilem, ut locuta est pertinacior fama. nec enim super hoc ulla documentorum rata est fides.",
+    "price": 0,
+    "tags": [
+      {
+        "id": 1,
+        "name": "rando",
+        "published_at": "11-05-2021",
+        "created_by": "Martin Manier",
+        "updated_by": "Martin Manier"
+      }
+    ],
+    "participant_count": 5,
+    "participants": [
+      {
+        "id": 1,
+        "username": "Monique",
+        "email": "monique@test.com",
+        "provider": "",
+        "password": "azerty",
+        "resetPasswordToken": "",
+        "confirmationToken": "",
+        "confirmed": true,
+        "blocked": false,
+        "role": "",
+        "age": 23,
+        "favorite_hangouts": "Component",
+        "goal": "Meet new friends",
+        "single": true,
+        "age_range": "Component",
+        "created_by": "Monique",
+        "updated_by": "Monique"
+      }
+    ],
+    "location": {
+      "id": "ChIJz3h-LBQ7gUcRfEXFyzgRcZQ",
+      "display": "Crema, 26013 Crema, Crémone, Italie",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [9.6824841, 45.3643375]
+      }
+    },
+    "published_at": "11-05-2021"
+  },
+  {
+    "id": "3",
+    "name": "Sortie jeux vidéo VR en groupe",
+    "mainPicture": "https://res.cloudinary.com/lilycloud/image/upload/v1621786339/sorties/sortie-jeu-video_pf0zcl.jpg",
+    "release_date": "2021-05-25T15:01:03.426Z",
+    "description": "Oportunum est, ut arbitror, explanare nunc causam, quae ad exitium praecipitem Aginatium inpulit iam inde a priscis maioribus nobilem, ut locuta est pertinacior fama. nec enim super hoc ulla documentorum rata est fides.",
+    "price": 0,
+    "tags": [
+      {
+        "id": 1,
+        "name": "jeux video",
+        "published_at": "11-05-2021",
+        "created_by": "Martin Manier",
+        "updated_by": "Martin Manier"
+      }
+    ],
+    "participant_count": 5,
+    "participants": [
+      {
+        "id": 1,
+        "username": "Monique",
+        "email": "monique@test.com",
+        "provider": "",
+        "password": "azerty",
+        "resetPasswordToken": "",
+        "confirmationToken": "",
+        "confirmed": true,
+        "blocked": false,
+        "role": "",
+        "age": 23,
+        "favorite_hangouts": "Component",
+        "goal": "Meet new friends",
+        "single": true,
+        "age_range": "Component",
+        "created_by": "Monique",
+        "updated_by": "Monique"
+      }
+    ],
+    "location": {
+      "id": "ChIJz3h-LBQ7gUcRfEXFyzgRcZQ",
+      "display": "Crema, 26013 Crema, Crémone, Italie",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [9.6824841, 45.3643375]
+      }
+    },
+    "published_at": "11-05-2021"
+  },
+  {
+    "id": "4",
+    "name": "Randonnée nature",
+    "mainPicture": "https://res.cloudinary.com/lilycloud/image/upload/v1621786339/sorties/sortie-rando_cejixl.jpg",
+    "release_date": "2021-05-25T15:01:03.426Z",
+    "description": "Oportunum est, ut arbitror, explanare nunc causam, quae ad exitium praecipitem Aginatium inpulit iam inde a priscis maioribus nobilem, ut locuta est pertinacior fama. nec enim super hoc ulla documentorum rata est fides.",
+    "price": 0,
+    "tags": [
+      {
+        "id": 1,
+        "name": "nature",
+        "published_at": "11-05-2021",
+        "created_by": "Martin Manier",
+        "updated_by": "Martin Manier"
+      },
+      {
+        "id": 2,
+        "name": "sport",
+        "published_at": "11-05-2021",
+        "created_by": "Martin Manier",
+        "updated_by": "Martin Manier"
+      }
+    ],
+    "participant_count": 5,
+    "participants": [
+      {
+        "id": 1,
+        "username": "Monique",
+        "email": "monique@test.com",
+        "provider": "",
+        "password": "azerty",
+        "resetPasswordToken": "",
+        "confirmationToken": "",
+        "confirmed": true,
+        "blocked": false,
+        "role": "",
+        "age": 23,
+        "favorite_hangouts": "Component",
+        "goal": "Meet new friends",
+        "single": true,
+        "age_range": "Component",
+        "created_by": "Monique",
+        "updated_by": "Monique"
+      }
+    ],
+    "location": {
+      "id": "ChIJz3h-LBQ7gUcRfEXFyzgRcZQ",
+      "display": "Crema, 26013 Crema, Crémone, Italie",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [9.6824841, 45.3643375]
+      }
+    },
+    "published_at": "11-05-2021"
+  }
+]

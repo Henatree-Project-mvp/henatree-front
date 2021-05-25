@@ -72,19 +72,38 @@ export default function App() {
           {/* *************************** */}
           <Stack.Screen name="SignUp" options={{ headerShown: false }}>
             {() => <SignUpScreen setToken={setToken} />}
+          {/* *************************** */}
+          {/*           SIGNUP            */}
+          {/* *************************** */}
+          <Stack.Screen name="SignUp" options={{ headerShown: false }}>
+            {() => <SignUpScreen setToken={setToken} />}
           </Stack.Screen>
-
+          {/* *************************** */}
+          {/*           SIGNIN            */}
+          {/* *************************** */}
+          <Stack.Screen name="SignIn" options={{ headerShown: false }}>
+            {() => <SignInScreen setToken={setToken} />}
+          </Stack.Screen>
           {/* *************************** */}
           {/*           SIGNIN            */}
           {/* *************************** */}
           <Stack.Screen name="SignIn">
             {() => <SignInScreen setToken={setToken} />}
           </Stack.Screen>
-
           {/* *************************** */}
           {/*           ONBOARDING        */}
           {/* *************************** */}
-          <Stack.Screen name="OnBoarding">{() => <OnBoarding />}</Stack.Screen>
+          <Stack.Screen name="OnBoarding" options={{ headerShown: false }}>
+            {() => <OnBoarding />}
+          </Stack.Screen>
+          {/* *************************** */}
+          {/*        SETUP PROFIL         */}
+          {/* *************************** */}
+          <Stack.Screen name="SetUpProfile">
+            {(props) => <SetUpProfileScreen {...props} setToken={setToken} />}
+ </Stack.Screen>
+         
+          
         </Stack.Navigator>
       ) : (
         // ************************
@@ -255,16 +274,17 @@ export default function App() {
                           <ProfileScreen {...props} setToken={setToken} />
                         )}
                       </Stack.Screen>
-                      <Stack.Screen name="SetUpProfile">
-                        {(props) => (
-                          <SetUpProfileScreen {...props} setToken={setToken} />
-                        )}
-                      </Stack.Screen>
                     </Stack.Navigator>
                   )}
                 </Tab.Screen>
               </Tab.Navigator>
             )}
+          </Stack.Screen>
+          {/* *************************** */}
+          {/*        SetUp Profil         */}
+          {/* *************************** */}
+          <Stack.Screen name="SetUpProfile">
+            {(props) => <SetUpProfileScreen {...props} setToken={setToken} />}
           </Stack.Screen>
         </Stack.Navigator>
       )}
