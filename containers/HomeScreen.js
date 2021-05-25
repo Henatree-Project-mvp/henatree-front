@@ -42,6 +42,7 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
+
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>
@@ -96,7 +97,10 @@ export default function HomeScreen({ navigation }) {
           </View>
         </ScrollView>
 
-        {/* Les sorties */}
+
+     
+
+          {/* Les sorties */}
 
         <View style={styles.outings}>
           <Text style={styles.contentTitle}>
