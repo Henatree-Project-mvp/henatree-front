@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useRoute } from "@react-navigation/core";
 import { useNavigation } from "@react-navigation/core";
 import {
@@ -6,13 +7,15 @@ import {
   View,
   TouchableOpacity,
   StyleSheet,
-  FlatList,
+  Animate,
   Image,
   ScrollView,
   ImageBackground,
+  SafeAreaView,
+  ActivityIndicator,
 } from "react-native";
+
 //Import des datas
-import categories from "../assets/categories.json";
 import sortie from "../assets/sortie.json";
 
 //Import des couleurs
@@ -24,10 +27,43 @@ const { yellow, blue, darkBlue, dark, errorColor, greyButton, greyFont } =
 import Tags from "../components/Tags";
 import PartCard from "../components/PartCard";
 
-export default function OutingDetailScreen() {
-  return (
-    <ScrollView style={styles.container}>
-      <ImageBackground style={styles.mainPhoto} source={{ uri: sortie.photo }}>
+export default function OutingDetailScreen({ navigation, route }) {
+  //declaration des datas
+  const [data, setData] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `http://henatree-api.herokuapp.com/hangouts/${route.params.id}`,
+          {
+            headers: {
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYWNmNDA2NGNhODJmMDAxNTk1NTU0MSIsImlhdCI6MTYyMTk0ODQ2MSwiZXhwIjoxNjI0NTQwNDYxfQ.-v4QpaHTxHJA4_vm6xnalVQy3sRUdRqgHCEOWFl2aIg",
+            },
+          }
+        );
+        setData(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        alert(error.response.data.error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  return isLoading ? (
+    <ActivityIndicator />
+  ) : (
+    <SafeAreaView>
+      <ScrollView style={styles.container}>
+        <Image
+          style={styles.mainPhoto}
+          source={{
+            uri: "https://res.cloudinary.com/lilycloud/image/upload/v1621786339/sorties/sortie-rando_cejixl.jpg",
+          }}
+        />
         <View style={styles.detailCard}>
           <View style={styles.ownerCard}>
             <View style={styles.col1}>
@@ -41,14 +77,16 @@ export default function OutingDetailScreen() {
             <View style={styles.col2}>
               <Text style={styles.ownerName}>Martin Magnier</Text>
               <Text style={styles.publishInfos}>
-                Publié le 14 févr. 2021 à 20h12
+                Publié {data.published_at}
               </Text>
             </View>
           </View>
-          <Text style={styles.titreSortie}>{sortie.titre}</Text>
+          <Text style={styles.titreSortie}>
+            {data.name} - id: {data._id}
+          </Text>
           <Text
             style={styles.txtInfosSortie}
-          >{`${sortie.dateSortie} ${sortie.horaireSortie} - ${sortie.nbParticipants}/${sortie.maxParticipants} participants - ${sortie.ville} `}</Text>
+          >{`${data.release_date}  - ${data.participants} participants - ${data.location.display} `}</Text>
           <View style={styles.tagCloud}>
             <Tags />
             <Tags />
@@ -56,17 +94,23 @@ export default function OutingDetailScreen() {
           </View>
           <View style={styles.descZone}>
             <Text style={styles.descTitle}>Description</Text>
-            <Text style={styles.descTxt}>{sortie.Description}</Text>
+            <Text style={styles.descTxt}>{data.description}</Text>
           </View>
           <View style={styles.partZone}>
             <Text style={styles.descTitle}>
-              Les participants ({sortie.nbParticipants})
+              Les participants ({data.participants})
             </Text>
             <PartCard />
+            <PartCard />
+            <PartCard />
+            <PartCard />
           </View>
+          <TouchableOpacity style={styles.buttonRes}>
+            Réserver une sortie
+          </TouchableOpacity>
         </View>
-      </ImageBackground>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -74,21 +118,20 @@ const styles = StyleSheet.create({
   // GLOBAL--------------
   container: {
     backgroundColor: "white",
+    height: "100%",
   },
   mainPhoto: {
     width: "100%",
     height: 300,
-    position: "relative",
+    resizeMode: "cover",
   },
   // DETAIL CARD--------------
   detailCard: {
     backgroundColor: "white",
-    height: 600,
     width: "100%",
     borderRadius: 20,
-    position: "absolute",
-    bottom: -550,
     padding: 20,
+    marginTop: -50,
   },
   // Owner infos --------------
   ownerCard: {
@@ -149,10 +192,12 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     fontSize: 16,
   },
+  // Participants Zone--------------
   partZone: {
     borderBottomColor: greyButton,
     borderBottomWidth: 1,
     paddingBottom: 20,
     paddingTop: 20,
+    marginBottom: 100,
   },
 });

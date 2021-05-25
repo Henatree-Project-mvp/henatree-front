@@ -42,89 +42,93 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>
-          Faites des rencontres différemment 😍
-        </Text>
-        <TextInput
-          style={styles.headerInput}
-          placeholder="Où voulez-vous sortir ?"
-        ></TextInput>
-      </View>
-
-      {/* Content */}
-
-      <View style={styles.content}>
-        {/* Title Content */}
-        <Text style={styles.contentTitle}>De quoi as-tu envie ?</Text>
-        <Text style={styles.contentSubTitle}>Lorem ipsum dolor sit amet.</Text>
-
-        {/* Line Activity */}
-        <ScrollView
-          style={styles.lineActivity}
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-        >
-          <View style={styles.colActivity}>
-            <Image
-              source={{ uri: sorties[0].photo }}
-              style={styles.activityImg}
-            />
-            <Text style={styles.textActivity}>Musique</Text>
-          </View>
-          <View style={styles.colActivity}>
-            <Image
-              source={{ uri: sorties[1].photo }}
-              style={styles.activityImg}
-            />
-            <Text style={styles.textActivity}>Randonnées</Text>
-          </View>
-          <View style={styles.colActivity}>
-            <Image
-              source={{ uri: sorties[2].photo }}
-              style={styles.activityImg}
-            />
-            <Text style={styles.textActivity}>Photos</Text>
-          </View>
-          <View style={styles.colActivity}>
-            <Image
-              source={{ uri: sorties[0].photo }}
-              style={styles.activityImg}
-            />
-            <Text style={styles.textActivity}>Musique</Text>
-          </View>
-        </ScrollView>
-
-        {/* Les sorties */}
-
-        <View style={styles.outings}>
-          <Text style={styles.contentTitle}>
-            Les sorties à côté de chez toi
+      <ScrollView>
+        {/* Header */}
+        <View style={styles.header}>
+          <Text style={styles.headerTitle}>
+            Faites des rencontres différemment 😍
           </Text>
+          <TextInput
+            style={styles.headerInput}
+            placeholder="Où voulez-vous sortir ?"
+          ></TextInput>
+        </View>
+
+        {/* Content */}
+
+        <View style={styles.content}>
+          {/* Title Content */}
+          <Text style={styles.contentTitle}>De quoi as-tu envie ?</Text>
+          <Text style={styles.contentSubTitle}>
+            Lorem ipsum dolor sit amet.
+          </Text>
+
+          {/* Line Activity */}
           <ScrollView
-            style={styles.lineOutings}
+            style={styles.lineActivity}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
           >
-            {/* Cols Outing */}
-            {displayOutings}
+            <View style={styles.colActivity}>
+              <Image
+                source={{ uri: sorties[0].photo }}
+                style={styles.activityImg}
+              />
+              <Text style={styles.textActivity}>Musique</Text>
+            </View>
+            <View style={styles.colActivity}>
+              <Image
+                source={{ uri: sorties[1].photo }}
+                style={styles.activityImg}
+              />
+              <Text style={styles.textActivity}>Randonnées</Text>
+            </View>
+            <View style={styles.colActivity}>
+              <Image
+                source={{ uri: sorties[2].photo }}
+                style={styles.activityImg}
+              />
+              <Text style={styles.textActivity}>Photos</Text>
+            </View>
+            <View style={styles.colActivity}>
+              <Image
+                source={{ uri: sorties[0].photo }}
+                style={styles.activityImg}
+              />
+              <Text style={styles.textActivity}>Musique</Text>
+            </View>
           </ScrollView>
+
+          {/* Les sorties */}
+
+          <View style={styles.outings}>
+            <Text style={styles.contentTitle}>
+              Les sorties à côté de chez toi
+            </Text>
+            <ScrollView
+              style={styles.lineOutings}
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+            >
+              {/* Cols Outing */}
+              {displayOutings}
+            </ScrollView>
+          </View>
         </View>
-      </View>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("OutingDetail");
-        }}
-      >
-        <Text style={{ fontSize: 18, color: "blue" }}>Voir une sortie</Text>
-      </TouchableOpacity>
-      <Button
-        title="Voir les sorties / Sorties à la une"
-        onPress={() => {
-          navigation.navigate("Outings");
-        }}
-      />
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("OutingDetail");
+          }}
+        >
+          <Text style={{ fontSize: 18, color: "blue" }}>Voir une sortie</Text>
+        </TouchableOpacity>
+        <Button
+          title="Voir les sorties / Sorties à la une"
+          onPress={() => {
+            navigation.navigate("Outings");
+          }}
+        />
+      </ScrollView>
     </SafeAreaView>
   );
 }
