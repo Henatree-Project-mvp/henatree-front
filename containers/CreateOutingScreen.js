@@ -198,7 +198,7 @@ export default function CreateOutingScreen({ navigation, route }) {
                   />
                 ) : (
                   <TouchableOpacity onPress={showDatepicker}>
-                    <Text>Ajouter une data</Text>
+                    <Text>Ajouter une date</Text>
                   </TouchableOpacity>
                 )}
               </View>

@@ -29,10 +29,13 @@ export default function SignUpScreen({ setToken }) {
         <View style={styles.intro}>
           <View style={styles.logo}>
             <Image
-              style={{ marginRight: 20 }}
+              style={{ marginRight: 20, width: 35, height: 44 }}
               source={require("../assets/img/logo.png")}
             />
-            <Image source={require("../assets/img/henatree.png")} />
+            <Image
+              style={{ marginRight: 20, width: 162, height: 31 }}
+              source={require("../assets/img/henatree.png")}
+            />
           </View>
           <Text numberOfLines={2} style={styles.introText}>
             Enfin une solution pour faire des rencontres 100% amicales 😻
@@ -86,13 +89,13 @@ const styles = StyleSheet.create({
   },
   imgBg: {
     width: "100%",
-    height: 460,
+    height: 550,
     position: "relative",
   },
   logo: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 50,
+    marginTop: 40,
     marginBottom: 20,
   },
   block: {
@@ -103,7 +106,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    marginTop: "100%",
+    marginTop: "110%",
   },
   intro: {
     justifyContent: "center",

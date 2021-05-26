@@ -15,8 +15,7 @@ export default YellowNextButton;
 
 const styles = StyleSheet.create({
   button: {
-    marginRight: 40,
-    marginBottom: 50,
+    marginBottom: 75,
     position: "absolute",
     bottom: 0,
     right: 0,
