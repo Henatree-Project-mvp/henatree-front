@@ -13,10 +13,8 @@ import {
   ImageBackground,
   SafeAreaView,
   ActivityIndicator,
+  FlatList,
 } from "react-native";
-
-//Import des datas
-import sortie from "../assets/sortie.json";
 
 //Import des couleurs
 import colors from "../assets/colors";
@@ -26,17 +24,22 @@ const { yellow, blue, darkBlue, dark, errorColor, greyButton, greyFont } =
 //Import des composants
 import Tags from "../components/Tags";
 import PartCard from "../components/PartCard";
+import ImageRandom from "../components/ImageRandom";
+import ArrowBack from "../components/ArrowBack";
+import BtAddFavorite from "../components/BtAddFavorite";
 
 export default function OutingDetailScreen({ navigation, route }) {
   //declaration des datas
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  //récupération du parametre ID
+  const { hangoutId } = route.params;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://henatree-api.herokuapp.com/hangouts/${route.params.id}`,
+          `http://henatree-api.herokuapp.com/hangouts/${hangoutId}`,
           {
             headers: {
               Authorization:
@@ -58,12 +61,15 @@ export default function OutingDetailScreen({ navigation, route }) {
   ) : (
     <SafeAreaView>
       <ScrollView style={styles.container}>
-        <Image
+        <ArrowBack />
+        <BtAddFavorite />
+        <ImageRandom />
+        {/* <Image
           style={styles.mainPhoto}
           source={{
             uri: "https://res.cloudinary.com/lilycloud/image/upload/v1621786339/sorties/sortie-rando_cejixl.jpg",
           }}
-        />
+        /> */}
         <View style={styles.detailCard}>
           <View style={styles.ownerCard}>
             <View style={styles.col1}>
@@ -77,36 +83,51 @@ export default function OutingDetailScreen({ navigation, route }) {
             <View style={styles.col2}>
               <Text style={styles.ownerName}>Martin Magnier</Text>
               <Text style={styles.publishInfos}>
-                Publié {data.published_at}
+                Publié le {data.updatedAt}
               </Text>
             </View>
           </View>
-          <Text style={styles.titreSortie}>
-            {data.name} - id: {data._id}
-          </Text>
+          <Text style={styles.titreSortie}>{data.name}</Text>
           <Text
             style={styles.txtInfosSortie}
-          >{`${data.release_date}  - ${data.participants} participants - ${data.location.display} `}</Text>
+          >{`${data.release_date}  - ${data.participant_count} participants - ${data.place_display} `}</Text>
           <View style={styles.tagCloud}>
-            <Tags />
-            <Tags />
-            <Tags />
+            {data.tags.length > 0 &&
+              data.tags.map((tag, index) => {
+                return <Tags key={index} name={tag.name} />;
+              })}
           </View>
           <View style={styles.descZone}>
             <Text style={styles.descTitle}>Description</Text>
             <Text style={styles.descTxt}>{data.description}</Text>
+            <Text style={styles.descTxt}>Id sortie : {data._id}</Text>
           </View>
           <View style={styles.partZone}>
-            <Text style={styles.descTitle}>
-              Les participants ({data.participants})
-            </Text>
-            <PartCard />
-            <PartCard />
-            <PartCard />
-            <PartCard />
+            {data.participants.length > 0 ? (
+              <Text style={styles.descTitle}>
+                Les participants : {data.participants.length} /{" "}
+                {data.participant_count}
+              </Text>
+            ) : (
+              <Text style={styles.descTitle}>
+                Les participants ({data.participant_count})
+              </Text>
+            )}
+
+            {data.participants.length > 0 &&
+              data.participants.map((participant, index) => {
+                return (
+                  <PartCard
+                    key={index}
+                    username={participant.username}
+                    age={participant.age}
+                    userId={participant.id}
+                  />
+                );
+              })}
           </View>
           <TouchableOpacity style={styles.buttonRes}>
-            Réserver une sortie
+            <Text>Réserver une sortie</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -115,6 +136,10 @@ export default function OutingDetailScreen({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
+  test: {
+    width: 200,
+    height: 100,
+  },
   // GLOBAL--------------
   container: {
     backgroundColor: "white",

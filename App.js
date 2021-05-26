@@ -141,13 +141,6 @@ export default function App() {
                         name="Outings"
                         options={{
                           title: "Sorties à la Une",
-                          // headerLeft: () => (
-                          //   <FontAwesome
-                          //     name="chevron-left"
-                          //     size={24}
-                          //     color={blue}
-                          //   />
-                          // ),
                         }}
                       >
                         {(props) => <OutingsScreen {...props} />}
@@ -159,7 +152,7 @@ export default function App() {
                         name="OutingDetail"
                         options={{
                           title: "Une sortie",
-                          // headerLeft: false,
+                          headerShown: false,
                         }}
                       >
                         {(props) => <OutingDetailScreen {...props} />}
