@@ -132,7 +132,9 @@ export default function App() {
                           headerShown: false,
                         }}
                       >
-                        {(props) => <HomeScreen {...props} />}
+                        {(props) => (
+                          <HomeScreen {...props} userToken={userToken} />
+                        )}
                       </Stack.Screen>
                       {/* *************************** */}
                       {/*       Voir les sorties      */}
