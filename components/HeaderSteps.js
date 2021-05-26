@@ -15,15 +15,13 @@ const styles = StyleSheet.create({
   header: {
     paddingTop: 20,
     paddingBottom: 20,
-    paddingLeft: 20,
-    flexDirection: "row",
-    alignItems: "center",
-    // justifyContent: "center",
-    // width: 400,
+    // paddingLeft: 20,
+    // flexDirection: "row",
+    // alignItems: "center",
   },
   text: {
     fontSize: 15,
     fontWeight: "600",
-    marginLeft: "46%",
+    // marginLeft: "46%",
   },
 });

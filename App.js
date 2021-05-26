@@ -85,7 +85,7 @@ export default function App() {
           {/*           ONBOARDING        */}
           {/* *************************** */}
           <Stack.Screen name="OnBoarding" options={{ headerShown: false }}>
-            {() => <OnBoarding />}
+            {() => <OnBoarding setToken={setToken} />}
           </Stack.Screen>
           {/* *************************** */}
           {/*        SETUP PROFIL         */}
