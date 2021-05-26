@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, ScrollView } from "react-native";
 
 import CardSetupProfil from "../../components/BoutonSetupProfil";
 import colors from "../../assets/colors";
@@ -13,28 +13,29 @@ const SecondStep = () => {
     { title: "Photographie" },
   ];
   return (
-    <View style={styles.container}>
-      <Text>Etape 2/4</Text>
-      <Text style={styles.h1}>
-        Quelles est ton but ?{" "}
-        <Text style={styles.facultatif}>(facultatif)</Text>
-      </Text>
-      <Text style={styles.p}>
-        Nous avons besoin d’informations complémentaires afin de te proposer les
-        sorties qui te correspondent le mieux.
-      </Text>
-      <View style={styles.cards}>
-        {choices.map((choice) => {
-          return (
-            <CardSetupProfil
-              key={choice.title}
-              icon={choice.icon}
-              title={choice.title}
-            />
-          );
-        })}
+    <ScrollView>
+      <View style={styles.container}>
+        <Text style={styles.h1}>
+          Quelles est ton but ?{" "}
+          <Text style={styles.facultatif}>(facultatif)</Text>
+        </Text>
+        <Text style={styles.p}>
+          Nous avons besoin d’informations complémentaires afin de te proposer
+          les sorties qui te correspondent le mieux.
+        </Text>
+        <View style={styles.cards}>
+          {choices.map((choice) => {
+            return (
+              <CardSetupProfil
+                key={choice.title}
+                icon={choice.icon}
+                title={choice.title}
+              />
+            );
+          })}
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

@@ -14,7 +14,6 @@ const ThirdStep = () => {
   ];
   return (
     <View style={styles.container}>
-      <Text>Etape 3/4</Text>
       <Text style={styles.h1}>
         Quelle est ta situation amoureuse ?{" "}
         <Text style={styles.facultatif}>(facultatif)</Text>

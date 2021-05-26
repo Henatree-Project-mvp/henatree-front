@@ -272,7 +272,7 @@ export default function App() {
           {/* *************************** */}
           {/*        SetUp Profil         */}
           {/* *************************** */}
-          <Stack.Screen name="SetUpProfile">
+          <Stack.Screen name="SetUpProfile" options={{ headerShown: false }}>
             {(props) => <SetUpProfileScreen {...props} setToken={setToken} />}
           </Stack.Screen>
         </Stack.Navigator>

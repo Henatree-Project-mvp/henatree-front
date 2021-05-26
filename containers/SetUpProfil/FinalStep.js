@@ -1,11 +1,21 @@
 import React from "react";
-import { Button, Text, TextInput, View, StyleSheet, Image } from "react-native";
+import {
+  Button,
+  Text,
+  TextInput,
+  View,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Dimensions,
+  SafeAreaView,
+} from "react-native";
 import colors from "../../assets/colors";
 
 const FinalStep = ({ step }) => {
   return (
-    <View>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <View style={styles.test}>
         <Image
           style={styles.img}
           source={require("../../assets/img/img_signup.png")}
@@ -45,7 +55,6 @@ const styles = StyleSheet.create({
   },
 
   img: {
-    flex: 1,
     width: 335,
   },
 });

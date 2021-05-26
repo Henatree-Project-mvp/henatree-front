@@ -5,7 +5,6 @@ import colors from "../../assets/colors";
 const FourthStep = () => {
   return (
     <View style={styles.container}>
-      <Text>Etape 4/4</Text>
       <Text style={styles.h1}>
         Dans quel coin souhaites-tu faire des sorties{" "}
         <Text style={styles.facultatif}>(facultatif)</Text>
