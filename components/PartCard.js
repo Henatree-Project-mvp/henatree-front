@@ -18,7 +18,7 @@ const { yellow, blue, darkBlue, dark, errorColor, greyButton, greyFont } =
 import categories from "../assets/categories.json";
 import sortie from "../assets/sortie.json";
 
-const PartCard = () => {
+const PartCard = ({ username, age, userId }) => {
   return (
     <View style={styles.partCard}>
       <View style={styles.col1}>
@@ -30,10 +30,9 @@ const PartCard = () => {
         />
       </View>
       <View style={styles.col2}>
-        <Text style={styles.partName}>{sortie.participants[0].username}</Text>
-        <Text style={styles.partInfos}>
-          {sortie.participants[0].statut},{sortie.participants[0].age} ans.
-        </Text>
+        <Text style={styles.partName}>{username}</Text>
+        {/* <Text style={styles.partInfos}>{age} ans</Text> */}
+        <Text style={styles.partInfos}>Id: {userId}</Text>
       </View>
     </View>
   );

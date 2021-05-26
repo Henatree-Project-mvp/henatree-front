@@ -14,10 +14,10 @@ import colors from "../assets/colors";
 const { yellow, blue, darkBlue, dark, errorColor, greyButton, greyFont } =
   colors;
 
-const Tags = () => {
+const Tags = ({ name }) => {
   return (
     <TouchableOpacity style={styles.tags}>
-      <Text style={styles.txtTags}>Concert</Text>
+      <Text style={styles.txtTags}>{name}</Text>
     </TouchableOpacity>
   );
 };

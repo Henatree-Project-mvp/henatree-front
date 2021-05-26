@@ -17,9 +17,12 @@ import colors from "../assets/colors";
 const { yellow, blue, darkBlue, dark, errorColor, greyButton, greyFont } =
   colors;
 //Import des datas
-import hangouts from "../assets/hangouts.json";
+// import hangouts from "../assets/hangouts.json";
 
-export default function OutingsScreen({ navigation }) {
+//import composants
+import ImageRandom from "../components/ImageRandom";
+
+export default function OutingsScreen({ navigation, route }) {
   //declaration des datas
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -58,49 +61,25 @@ export default function OutingsScreen({ navigation }) {
         renderItem={({ item }) => {
           return (
             <TouchableOpacity
-              onPress={() => {
-                navigation.navigate("OutingDetail", { id: item._id });
-              }}
+              onPress={() =>
+                navigation.navigate("OutingDetail", { hangoutId: item._id })
+              }
             >
-              <Image
+              {/* <Image
                 style={styles.photoSortie}
                 source={{
                   uri: "https://res.cloudinary.com/lilycloud/image/upload/v1621786339/sorties/sortie-rando_cejixl.jpg",
                 }}
-              />
+              /> */}
+              <ImageRandom />
               <Text style={styles.titreSortie}>{item.name}</Text>
               <Text
                 style={styles.txtInfosSortie}
-              >{`${item.release_date} - ${item.participant_count} participants - ${item.location.display} `}</Text>
+              >{`${item.release_date} - ${item.participant_count} participants - ${item.place_display} `}</Text>
             </TouchableOpacity>
           );
         }}
       />
-      {/* <FlatList
-        data={hangouts}
-        style={styles.container}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => {
-          return (
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate("OutingDetail", {
-                  outingId: item.id,
-                });
-              }}
-            >
-              <Image
-                style={styles.photoSortie}
-                source={{ uri: item.mainPicture }}
-              />
-              <Text style={styles.titreSortie}>{item.name}</Text>
-              <Text
-                style={styles.txtInfosSortie}
-              >{`${item.release_date} - ${item.participant_count} participants - ${item.location.display} `}</Text>
-            </TouchableOpacity>
-          );
-        }}
-      /> */}
     </View>
   );
 }

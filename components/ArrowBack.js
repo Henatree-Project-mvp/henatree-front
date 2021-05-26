@@ -1,4 +1,6 @@
 import React from "react";
+import { Entypo } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/core";
 import {
   View,
   Text,
@@ -12,10 +14,14 @@ import {
 import colors from "../assets/colors";
 
 const ArrowBack = () => {
+  const navigation = useNavigation();
   return (
-    <Button style={styles.arrowBack}>
-      <FontAwesome name="chevron-left" size={24} color={"black"} />
-    </Button>
+    <TouchableOpacity
+      style={styles.arrowBack}
+      onPress={() => navigation.navigate("Outings")}
+    >
+      <Entypo name="chevron-left" size={40} color="black" />
+    </TouchableOpacity>
   );
 };
 
@@ -23,6 +29,9 @@ export default ArrowBack;
 
 const styles = StyleSheet.create({
   arrowBack: {
-    paddingLeft: 20,
+    paddingLeft: 10,
+    position: "absolute",
+    top: 10,
+    zIndex: 2,
   },
 });
