@@ -20,7 +20,7 @@ export default function SignInScreen({ setToken }) {
 
   // temporary
   const token_temp =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYWQwYTI0YWY5OGE2MDAxNWU2YjE1ZSIsImlhdCI6MTYyMTk1NzkxNSwiZXhwIjoxNjI0NTQ5OTE1fQ.enn-9vdbbSrK-ODFk4ewFYO06HPe1ntVUavGsn4-WKs";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYWNmNDA2NGNhODJmMDAxNTk1NTU0MSIsImlhdCI6MTYyMTk0ODQ2MSwiZXhwIjoxNjI0NTQwNDYxfQ.-v4QpaHTxHJA4_vm6xnalVQy3sRUdRqgHCEOWFl2aIg";
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
 
@@ -97,12 +97,9 @@ export default function SignInScreen({ setToken }) {
         )}
         {/* CONNECT */}
         <TouchableOpacity
-
           style={styles.button}
           onPress={async () => {
             handleSubmit();
-
-
           }}
           // onPress={async () => {
           //   const userToken = "secret-token";

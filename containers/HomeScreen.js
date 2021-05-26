@@ -1,48 +1,100 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
 import { useNavigation } from "@react-navigation/core";
 import {
   StyleSheet,
-  Button,
+  ActivityIndicator,
   Text,
   TextInput,
   View,
   Image,
   TouchableOpacity,
   SafeAreaView,
-  StatusBar,
+  FlatList,
   Platform,
   ScrollView,
 } from "react-native";
 import colors from "../assets/colors";
 import categories from "../assets/categories.json";
 import sorties from "../assets/sorties.json";
+import { set } from "react-native-reanimated";
 
-export default function HomeScreen({ navigation }) {
-  // Map on outings
-  const displayOutings = sorties.map((elem, index) => {
-    return (
-      <TouchableOpacity
-        key={index}
-        style={styles.colOuting}
-        onPress={() => {
-          navigation.navigate("OutingDetail", {
-            outingId: elem.id,
-          });
-        }}
-      >
-        <Image source={{ uri: elem.photo }} style={styles.outingImg}></Image>
-        <Text style={styles.outingTitle}>{elem.titre}</Text>
-        <Text style={styles.outingSubTitle}>
-          {elem.dateSortie} {elem.horaireSortie} . {elem.nbParticipants}/
-          {elem.maxParticipants} participants . {elem.ville}
-        </Text>
-      </TouchableOpacity>
-    );
-  });
+export default function HomeScreen({ navigation, userToken }) {
+  const [data, setData] = useState();
+  const [type, setType] = useState();
+  const [nbHangouts, setNbHangouts] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
-  return (
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://henatree-api.herokuapp.com/hangouts",
+          {
+            headers: {
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYWNmNDA2NGNhODJmMDAxNTk1NTU0MSIsImlhdCI6MTYyMTk0ODQ2MSwiZXhwIjoxNjI0NTQwNDYxfQ.-v4QpaHTxHJA4_vm6xnalVQy3sRUdRqgHCEOWFl2aIg",
+            },
+          }
+        );
+        // map to get format date and time and nb participants
+        const dataTemp = response.data.map((elem, index) => {
+          // date and time
+          let date = new Date(elem.release_date);
+          const optionsDate = {
+            month: "short",
+            day: "2-digit",
+          };
+          const optionsTime = {
+            hour: "2-digit",
+            minute: "2-digit",
+          };
+          const dateFormated = date.toLocaleDateString("fr-FR", optionsDate);
+          const timeFormated = date.toLocaleTimeString("fr-FR", optionsTime);
+
+          elem.date = dateFormated;
+          elem.time = timeFormated;
+          // nb participants
+          let nbParticipants = 0;
+          if (elem.participants) {
+            nbParticipants = elem.participants.length;
+          }
+          elem.nbParticipants = nbParticipants;
+
+          // Return
+          return elem;
+        });
+
+        setData(dataTemp);
+
+        // Type Hangouts
+        const typeHangouts = [];
+        for (let i = 0; i < response.data.length; i++) {
+          const typeHangout = response.data[i].hangout_type;
+          if (typeHangouts.indexOf(typeHangout) && typeHangout) {
+            typeHangouts.push({ key: String(i), name: typeHangout });
+          }
+        }
+
+        // nbHangouts
+        setNbHangouts(response.data.length);
+
+        setType(typeHangouts);
+
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+        alert("An error occurred");
+      }
+    };
+    fetchData();
+  }, []);
+
+  return isLoading ? (
+    <ActivityIndicator size="large" color={colors.yellow} />
+  ) : (
     <SafeAreaView style={styles.container}>
-
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>
@@ -62,65 +114,68 @@ export default function HomeScreen({ navigation }) {
         <Text style={styles.contentSubTitle}>Lorem ipsum dolor sit amet.</Text>
 
         {/* Line Activity */}
-        <ScrollView
-          style={styles.lineActivity}
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-        >
-          <View style={styles.colActivity}>
-            <Image
-              source={{ uri: sorties[0].photo }}
-              style={styles.activityImg}
-            />
-            <Text style={styles.textActivity}>Musique</Text>
-          </View>
-          <View style={styles.colActivity}>
-            <Image
-              source={{ uri: sorties[1].photo }}
-              style={styles.activityImg}
-            />
-            <Text style={styles.textActivity}>Randonnées</Text>
-          </View>
-          <View style={styles.colActivity}>
-            <Image
-              source={{ uri: sorties[2].photo }}
-              style={styles.activityImg}
-            />
-            <Text style={styles.textActivity}>Photos</Text>
-          </View>
-          <View style={styles.colActivity}>
-            <Image
-              source={{ uri: sorties[0].photo }}
-              style={styles.activityImg}
-            />
-            <Text style={styles.textActivity}>Musique</Text>
-          </View>
-        </ScrollView>
-
-
-     
-
-          {/* Les sorties */}
-
+        <View style={styles.lineActivity}>
+          <FlatList
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            data={type}
+            keyExtractor={(item) => item.key}
+            renderItem={({ item }) => {
+              return (
+                <View style={styles.colActivity}>
+                  <Image
+                    source={{ uri: sorties[0].photo }}
+                    style={styles.activityImg}
+                  />
+                  <Text style={styles.textActivity}>{item.name}</Text>
+                </View>
+              );
+            }}
+          />
+        </View>
+        {/* Les sorties */}
         <View style={styles.outings}>
           <Text style={styles.contentTitle}>
             Les sorties à côté de chez toi
           </Text>
-          <ScrollView
-            style={styles.lineOutings}
+          <FlatList
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-          >
-            {/* Cols Outing */}
-            {displayOutings}
-          </ScrollView>
+            data={data}
+            style={styles.outings}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => {
+              return (
+                <TouchableOpacity
+                  style={styles.colOuting}
+                  onPress={() => {
+                    navigation.navigate("OutingDetail", {
+                      outingId: item._id,
+                    });
+                  }}
+                >
+                  <Image
+                    source={{
+                      uri: "https://res.cloudinary.com/lilycloud/image/upload/v1621786339/sorties/sortie-concert_oxifpk.jpg",
+                    }}
+                    style={styles.outingImg}
+                  ></Image>
+                  <Text style={styles.outingTitle}>{item.name}</Text>
+                  <Text style={styles.outingSubTitle}>
+                    {item.date} {item.time}. {item.nbParticipants}/
+                    {item.participant_count} participants . {item.place_display}
+                  </Text>
+                </TouchableOpacity>
+              );
+            }}
+          />
           <TouchableOpacity
             style={styles.btn}
             onPress={() => {
               navigation.navigate("Outings");
             }}
           >
-            <Text style={styles.txtBtn}>Voir les sorties (3)</Text>
+            <Text style={styles.txtBtn}>Voir les sorties ({nbHangouts})</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -195,14 +250,14 @@ const styles = StyleSheet.create({
   },
 
   outings: {
-    marginTop: 40,
-    marginBottom: 80,
+    marginTop: 30,
+    marginBottom: 40,
   },
   colOuting: {
     marginRight: 30,
   },
   lineOutings: {
-    marginTop: 20,
+    marginTop: 10,
     flexDirection: "row",
   },
   outingImg: {
@@ -221,7 +276,6 @@ const styles = StyleSheet.create({
     color: colors.dark,
   },
   btn: {
-    marginTop: 30,
     width: "100%",
     height: 60,
     borderColor: colors.blue,
